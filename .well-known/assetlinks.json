@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.ffghub.cricchamp",
+      "sha256_cert_fingerprints": [
+        "C8:94:10:54:28:03:90:BB:8A:B0:60:51:05:8F:90:45:CB:92:1C:E0:83:A3:08:DB:36:83:D1:BB:67:96:29:E0"
+      ]
+    }
+  }
+]
