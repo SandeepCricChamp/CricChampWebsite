@@ -1,1 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open in CricChamp</title>
+  <script>
+    function openApp() {
+      const params = new URLSearchParams(window.location.search);
+      const eventId = params.get('id');
+      const packageName = 'com.ffghub.cricchamp'; // Your actual package name
+      const schemeUrl = `https://cricchamp.com/${eventId}`; // Matches your working deep link format
 
+      // Try to open the app using App Link format
+      window.location.href = schemeUrl;
+
+      // Fallback to Play Store if app is not installed
+      setTimeout(() => {
+        window.location.href = `https://play.google.com/store/apps/details?id=${packageName}`;
+      }, 2000);
+    }
+
+    window.onload = openApp;
+  </script>
+</head>
+<body>
+  <p>Opening CricChamp...</p>
+</body>
+</html>
