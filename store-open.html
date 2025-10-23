@@ -9,7 +9,7 @@
       const eventId = params.get('id');
       const packageName = 'com.ffghub.cricchamp'; // your real package name
       const schemeUrl = `cricchamp://event?id=${eventId}`;
-      const fallbackUrl = `https://play.google.com/store/apps/details?id=${packageName}`; // for closed testing
+      const fallbackUrl = `market://details?id=${packageName}`; // for closed testing
 
       // Try to open the app
       window.location.href = schemeUrl;
