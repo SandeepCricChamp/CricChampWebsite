@@ -1,21 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Event Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CricChamp Event</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .button {
+            background-color: #667eea;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .button:hover {
+            background-color: #764ba2;
+        }
+    </style>
 </head>
 <body>
-    <h1>Event Details</h1>
+    <div class="container">
+        <h1>🎮 Opening CricChamp</h1>
+        <p>Redirecting to the app...</p>
+        <div class="spinner"></div>
+        <p style="font-size: 14px; color: #999;">If the app doesn't open, we'll take you to the Play Store</p>
+        <button class="button" onclick="downloadApp()">Download from Play Store</button>
+    </div>
+
     <script>
-        // Get the URL parameters
+        const packageName = 'com.ffghub.cricchamp';
+        const playStoreLink = `https://play.google.com/store/apps/details?id=${packageName}`;
+        
+        // Get event ID from URL parameter
         const urlParams = new URLSearchParams(window.location.search);
-        // Use 'id' instead of 'eventId'
         const eventId = urlParams.get('id');
-        // Fetch event details using eventId
-        fetch(`api/event/${eventId}`)
-            .then(response => response.json())
-            .then(data => {
-                // Process event data
-            });
+        
+        function downloadApp() {
+            window.location.href = playStoreLink;
+        }
+        
+        function openApp() {
+            if (!eventId) {
+                alert('No event ID provided');
+                downloadApp();
+                return;
+            }
+            
+            // Try to open the app using Intent with event ID
+            const appLink = `intent://event/${eventId}#Intent;scheme=cricchamp;package=${packageName};end`;
+            window.location.href = appLink;
+            
+            // Fallback to Play Store after 2.5 seconds
+            setTimeout(() => {
+                downloadApp();
+            }, 2500);
+        }
+        
+        // Trigger redirect on page load
+        window.addEventListener('load', openApp);
     </script>
 </body>
 </html>
