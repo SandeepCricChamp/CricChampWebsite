@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Page</title>
+</head>
+<body>
+    <h1>Welcome to the Event Page</h1>
+    <script>
+        // Function to get URL parameters
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Get the event ID from URL parameters
+        const eventId = getQueryParam('eventId');
+
+        // Redirect logic for deep linking
+        if (eventId) {
+            const appURL = `intent://events/${eventId}#Intent;scheme=yourappscheme;package=com.ffghub.cricchamp;end`;
+            const playStoreURL = `https://play.google.com/store/apps/details?id=com.ffghub.cricchamp`;
+
+            // Try to open the app, fall back to Play Store if not installed
+            window.location.href = appURL;
+
+            // Fallback timer to redirect to Play Store
+            setTimeout(() => {
+                window.location.href = playStoreURL;
+            }, 2000);
+        } else {
+            document.body.innerHTML = '<p>No event ID provided.</p>';
+        }
+    </script>
+</body>
+</html>
