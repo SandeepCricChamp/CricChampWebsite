@@ -89,11 +89,10 @@
         }
         
         function openApp() {
-    if (!eventId) {
-        // No alert popup - just redirect to Play Store directly
-        downloadApp();
-        return;
-    }
+            if (!eventId) {
+                // No event ID - just go to Play Store
+                downloadApp();
+                return;
             }
             
             // Try to open the app using Intent with event ID
