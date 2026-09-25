@@ -1,31 +1,128 @@
 html, body {
-    background-color: #043d69;
+  margin: 0;
+  min-height: 100%;
+  background: #043d69;
+  font-family: Arial, Helvetica, sans-serif;
 }
+
+* { box-sizing: border-box; }
 
 body {
-    margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #2c3e50; /* Dark background for the footer */
-    color: #ecf0f1; /* Light text color for better visibility */
-    padding: 5px;
-    position: relative;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+.hero {
+  width: min(1280px, 100%);
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  align-items: center;
+  gap: 28px;
+  padding: 48px 6vw;
 }
 
-.footer a {
-    color: #1abc9c; /* Light color for links */
-    text-decoration: none;
-    padding: 10px;
-    transition: color 0.3s;
+.hero-copy { text-align: center; }
+
+.brand {
+  margin: 0 0 62px;
+  color: #f7f7f7;
+  font-size: clamp(2.5rem, 5vw, 4.8rem);
+  line-height: 1;
+  letter-spacing: -0.055em;
+  font-weight: 900;
 }
 
-.footer a:hover {
-    color: #16a085; /* Darker color on hover */
+.brand span { color: #ffd638; }
+.brand b { color: #050505; }
+.brand strong { color: #ed008c; }
+
+.tagline {
+  margin: 0;
+  color: #ffd638;
+  font-size: clamp(2.25rem, 4.6vw, 4.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.tagline span { color: #f7f7f7; }
+
+.download-area {
+  margin: 64px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.store-badge { text-decoration: none; }
+.google-play img { display: block; width: 174px; height: auto; }
+
+.download-arrow {
+  color: #ffd638;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.app-icon-link {
+  width: 78px;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.app-icon-placeholder {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #111;
+  border-radius: 5px;
+  background: linear-gradient(145deg, #80caff, #e8f7ff);
+  font-size: 2.5rem;
+}
+
+.download-label { font-size: 1rem; font-weight: 900; }
+
+.app-store {
+  width: 174px;
+  height: 52px;
+  border-radius: 4px;
+  background: #050505;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid #aaa;
+}
+
+.apple-mark { font-size: 1.5rem; }
+.app-store small, .app-store b { display: block; line-height: 1.05; text-align: left; }
+.app-store small { font-size: 0.6rem; }
+.app-store b { font-size: 1.25rem; }
+
+.hero-visual {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 540px;
+  justify-self: center;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 24px;
+  background: rgba(255,255,255,0.035);
+}
+
+@media (max-width: 850px) {
+  .hero { grid-template-columns: 1fr; padding: 42px 20px; }
+  .hero-visual { width: min(540px, 90vw); }
+  .brand { margin-bottom: 42px; }
+  .download-area { margin-top: 42px; }
 }
