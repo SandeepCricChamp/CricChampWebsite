@@ -5,21 +5,20 @@ html, body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   background: #043d69;
 }
 
 .hero {
   width: min(1280px, 96vw);
-  min-height: 760px;
+  flex: 1;
+  min-height: 700px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
@@ -27,27 +26,20 @@ body {
   padding: 38px 20px;
 }
 
-.hero-copy {
-  padding-left: clamp(10px, 4vw, 64px);
-}
+.hero-copy { padding-left: clamp(10px, 4vw, 64px); }
 
 .brand {
   margin: 0 0 54px;
   color: #ffffff;
   font-size: clamp(2.5rem, 4.2vw, 5.4rem);
-  line-height: 0.95;
-  letter-spacing: -0.065em;
+  line-height: .95;
+  letter-spacing: -.065em;
   font-weight: 900;
   text-transform: uppercase;
 }
 
-.brand-dot {
-  color: #ffffff;
-}
-
-.brand-3d {
-  color: #ff1ad9;
-}
+.brand-name { color: #f9d53a; }
+.brand-3d { color: #ed008c; }
 
 .tagline {
   margin: 0;
@@ -55,24 +47,23 @@ body {
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
+  text-transform: uppercase;
 }
 
 .tagline-top {
-  color: #ffffff;
+  color: #fff;
   font-size: clamp(2.2rem, 3.6vw, 4.2rem);
   line-height: 1;
   font-weight: 800;
-  letter-spacing: -0.05em;
-  text-transform: uppercase;
+  letter-spacing: -.05em;
 }
 
 .tagline-bottom {
   color: #f9d53a;
   font-size: clamp(2.5rem, 4.5vw, 5rem);
-  line-height: 0.95;
+  line-height: .95;
   font-weight: 900;
-  letter-spacing: -0.06em;
-  text-transform: uppercase;
+  letter-spacing: -.06em;
 }
 
 .download-row {
@@ -84,45 +75,52 @@ body {
   flex-wrap: wrap;
 }
 
-.store-badge,
-.app-badge {
+.store-badge, .app-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
 }
 
-.store-badge img {
+.google-play img {
   display: block;
   width: 188px;
   height: auto;
-  border-radius: 12px;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+.app-badge {
+  flex-direction: column;
+  gap: 4px;
+  color: #fff;
+  font-weight: 900;
+  font-size: .95rem;
+  text-transform: uppercase;
 }
 
 .app-badge img {
   display: block;
   width: 74px;
   height: 74px;
-  border-radius: 18px;
+  border-radius: 10px;
   object-fit: cover;
-  border: 2px solid rgba(255,255,255,0.22);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+  border: 2px solid rgba(255,255,255,.3);
 }
 
 .app-store {
-  width: 110px;
-  height: 54px;
-  background: rgba(16, 16, 16, 0.78);
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.18);
+  width: 188px;
+  height: 58px;
+  gap: 8px;
+  color: #fff;
+  background: #050505;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 5px;
 }
 
-.apple {
-  color: #ffffff;
-  font-size: 2rem;
-  line-height: 1;
-}
+.apple { font-size: 2rem; line-height: 1; }
+.app-store-text { text-align: left; line-height: 1.05; }
+.app-store-text small, .app-store-text b { display: block; }
+.app-store-text small { font-size: .65rem; }
+.app-store-text b { font-size: 1.35rem; }
 
 .arrow {
   color: #f9d53a;
@@ -131,25 +129,30 @@ body {
   line-height: 1;
 }
 
-.download-caption {
-  margin-top: 16px;
-  color: #ffffff;
-  font-size: 1.2rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-align: center;
-  width: 100%;
-}
-
 .hero-visual {
   width: min(560px, 100%);
   height: min(530px, 64vw);
   justify-self: center;
   border-radius: 28px;
-  border: 2px solid rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.04);
+  border: 2px solid rgba(255,255,255,.2);
+  background: rgba(255,255,255,.04);
 }
+
+.footer {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 12px 20px;
+  color: #ecf0f1;
+  background: #2c3e50;
+  text-align: center;
+}
+
+.footer p { margin: 0; }
+.footer a { color: #1abc9c; text-decoration: none; }
+.footer a:hover { color: #16a085; }
 
 @media (max-width: 980px) {
   .hero {
@@ -158,21 +161,8 @@ body {
     padding-top: 42px;
     padding-bottom: 42px;
   }
-
-  .hero-copy {
-    padding-left: 0;
-    text-align: center;
-  }
-
-  .tagline {
-    align-items: center;
-  }
-
-  .download-row {
-    justify-content: center;
-  }
-
-  .download-caption {
-    text-align: center;
-  }
+  .hero-copy { padding-left: 0; text-align: center; }
+  .tagline { align-items: center; }
+  .download-row { justify-content: center; }
+  .hero-visual { width: min(540px, 90vw); height: min(540px, 80vw); }
 }
