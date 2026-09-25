@@ -26,10 +26,7 @@ body {
   padding: clamp(40px, 6vw, 76px) clamp(22px, 5vw, 70px);
 }
 
-.hero-copy {
-  min-width: 0;
-  text-align: center;
-}
+.hero-copy { min-width: 0; text-align: center; }
 
 .brand {
   margin: 0 0 clamp(42px, 6vw, 68px);
@@ -79,8 +76,7 @@ body {
   flex-wrap: nowrap;
 }
 
-.store-link,
-.app-badge {
+.store-link, .app-badge {
   flex: 0 1 auto;
   display: inline-flex;
   align-items: center;
@@ -88,12 +84,33 @@ body {
   text-decoration: none;
 }
 
-.store-badge {
-  display: block;
-  width: clamp(125px, 14vw, 188px);
-  height: auto;
-  object-fit: contain;
+.play-badge {
+  width: clamp(145px, 14vw, 188px);
+  min-height: 54px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 6px;
+  background: #050505;
+  color: #fff;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0,0,0,.18);
 }
+
+.play-logo {
+  width: 26px;
+  height: 30px;
+  flex: 0 0 26px;
+  background: linear-gradient(145deg, #37c5f2 0 32%, #49d16d 32% 50%, #ffd44b 50% 68%, #f35e60 68%);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.play-copy { line-height: 1.05; white-space: nowrap; }
+.play-copy small, .play-copy strong { display: block; }
+.play-copy small { font-size: .55rem; letter-spacing: .06em; }
+.play-copy strong { font-size: clamp(.95rem, 1.4vw, 1.25rem); }
 
 .app-badge {
   flex-direction: column;
@@ -112,6 +129,13 @@ body {
   border-radius: 10px;
   object-fit: cover;
   border: 2px solid rgba(255,255,255,.3);
+}
+
+.app-store-badge {
+  display: block;
+  width: clamp(145px, 14vw, 188px);
+  height: 54px;
+  object-fit: contain;
 }
 
 .arrow {
@@ -133,9 +157,6 @@ body {
 
 .footer {
   flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   padding: 12px 20px;
   color: #ecf0f1;
@@ -143,7 +164,16 @@ body {
   text-align: center;
 }
 
-.footer p { margin: 0; }
+.footer p {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0 10px;
+  line-height: 1.6;
+}
+
 .footer a { color: #1abc9c; text-decoration: none; }
 .footer a:hover { color: #16a085; }
 
@@ -163,12 +193,12 @@ body {
 @media (max-width: 560px) {
   .hero {
     width: 100%;
-    gap: 36px;
-    padding: 42px 14px 48px;
+    gap: 34px;
+    padding: 38px 12px 42px;
   }
 
   .brand {
-    margin-bottom: 38px;
+    margin-bottom: 36px;
     font-size: clamp(2rem, 10vw, 3rem);
   }
 
@@ -180,14 +210,25 @@ body {
   }
 
   .download-row {
-    gap: 8px;
-    margin-top: 34px;
+    width: 100%;
+    gap: 7px;
+    margin-top: 32px;
   }
 
-  .store-badge { width: min(31vw, 145px); }
-  .app-badge img { width: 56px; height: 56px; }
-  .app-badge { font-size: .65rem; }
-  .arrow { font-size: 1.45rem; }
+  .play-badge {
+    width: min(30vw, 136px);
+    min-height: 46px;
+    padding: 6px 7px;
+    gap: 6px;
+  }
+
+  .play-logo { width: 20px; height: 24px; flex-basis: 20px; }
+  .play-copy small { font-size: .42rem; }
+  .play-copy strong { font-size: .78rem; }
+  .app-store-badge { width: min(30vw, 136px); height: 46px; }
+  .app-badge img { width: 54px; height: 54px; }
+  .app-badge { font-size: .62rem; }
+  .arrow { font-size: 1.35rem; }
 
   .hero-visual {
     width: min(88vw, 360px);
@@ -195,8 +236,10 @@ body {
   }
 
   .footer {
-    padding: 12px 10px;
-    font-size: .78rem;
-    line-height: 1.6;
+    padding: 12px 14px;
+    font-size: .76rem;
   }
+
+  .footer p { gap: 2px 8px; }
+  .footer-separator { display: none; }
 }
