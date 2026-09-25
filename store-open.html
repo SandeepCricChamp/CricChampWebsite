@@ -3,23 +3,27 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Open in CricChamp</title>
+  <style>
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background-color: #043d69;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+  </style>
   <script>
     function openApp() {
       const params = new URLSearchParams(window.location.search);
       const eventId = params.get('id');
-      const packageName = 'com.ffghub.cricchamp'; // your real package name
+      const packageName = 'com.ffghub.cricchamp';
       const schemeUrl = `cricchamp://event?id=${eventId}`;
-      const fallbackUrl = `market://details?id=${packageName}`; // for closed testing
-
-      // Try to open the app
+      const fallbackUrl = `market://details?id=${packageName}`;
       window.location.href = schemeUrl;
-
-      // Fallback to Play Store after short delay
       setTimeout(() => {
         window.location.href = fallbackUrl;
       }, 2000);
     }
-
     window.onload = openApp;
   </script>
 </head>
